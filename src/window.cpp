@@ -1,20 +1,27 @@
 #include "window.h"
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
 
 Window::Window(QWidget *parent) :
  QWidget(parent)
  {
-   // SEt Window size
-   setFixedSize(100, 50);
-   // // Create and position the button
-   // m_button = new QPushButton("Hello wrold", this);
-   // m_button->setGeometry(10, 10, 80, 30);
-   QLabel *lblHello = new QLabel("<center>Hello world!</center>");
+   // Label at top
+   QLabel *lblHello = new QLabel("Step Sequencer");
+   // Buttons in step seq
+   QHBoxLayout *stepLayout = new QHBoxLayout;
+   QPushButton *stepButtons[10];
+   for (int i = 0; i < 10; i++) {
+     stepButtons[i] = new QPushButton(QString::fromStdString(std::to_string(i)));
+     stepLayout->addWidget(stepButtons[i]);
+   }
 
    // VBox for main part of page
    QVBoxLayout *layout = new QVBoxLayout;
    layout->addWidget(lblHello);
+   layout->addLayout(stepLayout);
 
    setLayout(layout);
+   resize(800,600);
  }
