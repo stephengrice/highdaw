@@ -2,17 +2,20 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
 #include <QWidget>
+#include <QObject>
 
 class QPushButton;
 class MainWindow : public QMainWindow
 {
+  Q_OBJECT
 public:
   explicit MainWindow(QWidget *parent = 0);
 private slots:
-  void handleClick(QWidget* parent);
+  void handleButton();
 private:
-  QPushButton *m_button;
+ QLabel *lblHello;
 };
 
 #endif // MAINWINDOW_H

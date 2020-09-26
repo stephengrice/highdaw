@@ -10,15 +10,16 @@ MainWindow::MainWindow(QWidget *parent) :
  QMainWindow(parent)
  {
    // Label at top
-   QLabel *lblHello = new QLabel("Step Sequencer");
+   lblHello = new QLabel("Step Sequencer");
+   // connect(lblHello, SIGNAL(released()), this, SLOT(handleButton()));
    // Buttons in step seq
    QHBoxLayout *stepLayout = new QHBoxLayout;
    QPushButton *stepButtons[10];
    for (int i = 0; i < 10; i++) {
      stepButtons[i] = new QPushButton(QString::fromStdString(std::to_string(i)));
      stepLayout->addWidget(stepButtons[i]);
-     stepButtons[i]->setEnabled(false);
-     connect(stepButtons[i], SIGNAL (clicked()), this, SLOT (handleClick()));
+     // stepButtons[i]->setEnabled(false);
+     connect(stepButtons[i], SIGNAL (released()), this, SLOT (handleButton()));
    }
 
    // VBox for main part of page
@@ -32,6 +33,6 @@ MainWindow::MainWindow(QWidget *parent) :
    resize(800,600);
  }
 
-void MainWindow::handleClick(QWidget* parent = 0) {
+void MainWindow::handleButton() {
   std::cout << "click" << std::endl;
 }
