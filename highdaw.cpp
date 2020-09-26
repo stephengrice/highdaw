@@ -1,7 +1,12 @@
-#include <iostream>
+#include <QApplication>
+#include <QLabel>
 
-int main()
+int main(int argc, char** argv)
 {
-  std::cout << "Hello world" << std::endl;
-  return 0;
+  QApplication app(argc, argv);
+  QLabel lblHello("<center>Hello world!</center>");
+  lblHello.setWindowTitle("Hello World QT!");
+  lblHello.resize(400, 400);
+  lblHello.show();
+  return app.exec();
 }
