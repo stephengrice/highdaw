@@ -19,6 +19,13 @@ MainWindow::MainWindow(QWidget *parent) :
      stepButtons[i] = new QPushButton(QString::fromStdString(std::to_string(i)));
      stepLayout->addWidget(stepButtons[i]);
      // stepButtons[i]->setEnabled(false);
+     // Change background color of pushbutton
+     QPalette pal = stepButtons[i]->palette();
+     pal.setColor(QPalette::Button, QColor(Qt::blue));
+     stepButtons[i]->setAutoFillBackground(true);
+     stepButtons[i]->setPalette(pal);
+     stepButtons[i]->update();
+
      connect(stepButtons[i], SIGNAL (released()), this, SLOT (handleButton()));
    }
 
